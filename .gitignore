@@ -3,3 +3,8 @@
 .DS_Store?
 node_modules/
 .dpl/
+<<<<<<< HEAD
+=======
+public/js/lib/angular-1.4.6.zip
+public/js/lib/angular-1.4.6/
+>>>>>>> cfc489ebd093c784b13937a6491b88e8169b8282

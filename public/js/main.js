@@ -1,1 +1,1 @@
-var myApp = angular.module('alurapic', ['minhaDirectiva', 'ngAnimate', 'ngRoute']);
+var myApp = angular.module('alurapic', ['minhasDirectivas', 'ngAnimate', 'ngRoute']);
