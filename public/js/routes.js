@@ -1,0 +1,11 @@
+// myApp.config(function($routeProvider,$locationProvider) {
+myApp.config(function($routeProvider) {
+  // $locationProvider.html5Mode(true);
+  $routeProvider.when('/',{
+    templateUrl: 'partials/principal.html',
+    controller: "FotosController"
+  });
+  $routeProvider.when('/cadastro',{
+    templateUrl: 'partials/cadastra.html'
+  });
+});
