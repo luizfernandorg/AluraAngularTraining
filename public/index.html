@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="alurapic">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <!-- <base href="/"/> -->
+        <title>Alurapic</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/efeitos.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+    <body >
+        <div class="container">
+          <header>
+            <ul>
+              <li><a href="#/">Home</a></li>
+              <li><a href="#/cadastro">Cadastrar fotos</a></li>
+            </ul>
+          </header>
+          <ng-view></ng-view>
+        </div> <!-- fim container -->
+
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/angular-animate.min.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/routes.js"></script>
+        <script src="js/controllers/fotos-controller.js"></script>
+        <script src="js/directives/minhas-diretivas.js"></script>
+    </body>
+</html>
