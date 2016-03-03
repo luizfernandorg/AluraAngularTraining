@@ -3,6 +3,14 @@
 </div>
 <div class="row">
   <div class="col-md-12">
+    <p>
+      &nbsp;
+      <span ng-show="mensagem.length" class="alert alert-info">
+        {{mensagem}}
+      </span>
+    </p>
+  </div>
+  <div class="col-md-12">
     <form>
       <input type="text" class="form-control" name="filtro" placeholder="Filtrar foto" ng-model="filtro" ng-model-options="{debounce: 500}">
     </form>
@@ -11,7 +19,7 @@
 <div class="row">
   <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
     <minha-foto class='img-responsive center-block' src="{{foto.url}}" alt="{{foto.titulo}}" /></minha-foto>
-    <a href="#/edit/{{foto._id}}" class="btn btn-primary btn-block">Editar</a>
-    <button type="button" name="button" class="btn btn-danger btn-block" ng-click="remover(foto)">Remover</button>
+    <a href="#/edit/{{foto._id}}" class="btn btn-primary btn-block editar-btn">Editar</a>
+    <meu-botao-perigo acao="remover(foto)" nome="Remover" class='btn-block'></meu-botao-perigo>
   </meu-painel>
 </div>

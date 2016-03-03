@@ -1,4 +1,11 @@
-<h1>Cadastro de foto</h1><span ng-if="mensagem != ''" class=""> - {{mensagem}}</span>
+<h1>Cadastro de foto</h1>
+<div class="col-md-12">
+  <p>
+    <span ng-show="mensagem.length" class="alert alert-info">
+      {{mensagem}}
+    </span>
+  </p>
+</div>
 <div class="row">
   <div class="col-md-5">
     <form name="formulario" novalidate ng-submit="submeter()">
@@ -22,6 +29,16 @@
         <fieldset class="form-group">
           <label>Descrição</label>
           <textarea name="descricao" class="form-control" placeholder="Ensira uma descrição para a foto" rows="12" ng-model="foto.descricao"></textarea>
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Grupos</label>
+          <select class="form-control" name="grupo" required ng-controller="GruposController"
+          ng-model="foto.grupo" ng-options="grupo._id as (grupo.nome | uppercase) for grupo in grupos">
+            <option value="">Selecione um grupo</option>
+          </select>
+          <span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-control alert-danger">
+            Seleção de grupo é obrigatório!
+          </span>
         </fieldset>
         <fieldset class='col-md-6' class='form-group'>
           <input type="submit" name="enviar" value="Cadastrar" class='btn btn-primary' ng-disabled="formulario.$invalid">

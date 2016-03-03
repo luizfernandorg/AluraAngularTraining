@@ -4,7 +4,8 @@ myApp.controller('FotosController', function($scope, $http){
   //   titulo:'Leão'
   // }
   $scope.fotos = [];
-  // $scope.filtro = ''; //para este caso é opcional
+  $scope.mensagem = '';
+  // $scope.filtro = ''; //for this case is optional
   // var promise = $http.get("/v1/fotos");
   // promise.then(function(resultado){
   //   $scope.fotos = resultado.data;
@@ -23,9 +24,10 @@ myApp.controller('FotosController', function($scope, $http){
     .success(function(){
       var index = $scope.fotos.indexOf(foto);
       $scope.fotos.splice(index,1);
-      console.log('removido a imagem '+ foto.titulo);
+      $scope.mensagem='Foto ' + foto.titulo + ' removido com sucesso!';
     }).error(function(error){
-      console.log('Erro ao remover a foto')
+      console.log(erro);
+      $scope.mensagem='Erro ao remover a foto ' + foto.titulo;
     });
   }
 });
