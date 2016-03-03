@@ -1,13 +1,13 @@
-myApp.controller('FotoController', function($scope, $http, $routeParams){
+myApp.controller('FotoController', function($scope, reccursoFoto, $routeParams){
   $scope.foto = {};
+  $scope.mensagem = '';
 
   var fotoAtual = $routeParams.fotoId;
 
   if(fotoAtual){
-    $http.get('/v1/fotos/' + fotoAtual)
-    .success(function(foto){
+    recursoFoto.get({fotoId: fotoAtual}, function(foto){
       $scope.foto = foto;
-    }).error(function(error){
+    }, function(error){
       console.log(error);
       $scope.mensagem = 'Erro ao obter a foto';
     });
@@ -19,28 +19,26 @@ myApp.controller('FotoController', function($scope, $http, $routeParams){
     }
     return false;
   };
-  $scope.mensagem = '';
 
   $scope.submeter = function(){
     if($scope.formulario.$valid){
-      if($routeParams.fotoId){
-        $http.put("/v1/fotos/"+$scope.foto._id, $scope.foto)
-        .success(function(){
+      if(fotoAtual){
+        recursoFoto.update({fotoId: $scope.foto._id}, $scope.foto, function(){
           $scope.mensagem = "Foto alterada com sucesso!";
-        }).error(function(error){
+        }, function(error){
           $scope.mensagem = 'Não foi possível alterar';
         });
       }else{
-        $http.post("v1/fotos", $scope.foto).success(function(){
+        recursoFoto.save($scope.foto, function(){
           $scope.mensagem = "Foto adicionada com sucesso";
-        }).error(function(e){
+          $scope.limpar();
+        }, function(error){
           $scope.mensagem = "Não foi possível cadastrar a foto";
         });
-        $scope.foto = {};
-        $scope.testeFoto()
       }
     }
   }
+
   $scope.limpar = function(){
     $scope.foto = {};
     $scope.testeFoto();
