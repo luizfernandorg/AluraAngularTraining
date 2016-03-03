@@ -9,4 +9,9 @@ myApp.config(function($routeProvider) {
     templateUrl: 'partials/cadastra.html',
     controller: 'FotoController'
   });
+  $routeProvider.when('/edit/:fotoId',{
+    templateUrl: 'partials/cadastra.html',
+    controller: 'FotoController'
+  });
+  $routeProvider.otherwise({redirectTo:'/'});
 });

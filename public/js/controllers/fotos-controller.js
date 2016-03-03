@@ -17,4 +17,15 @@ myApp.controller('FotosController', function($scope, $http){
   }).error(function(error){
     console.log(error);
   });
+
+  $scope.remover = function(foto){
+    $http.delete("/v1/fotos/" + foto._id)
+    .success(function(){
+      var index = $scope.fotos.indexOf(foto);
+      $scope.fotos.splice(index,1);
+      console.log('removido a imagem '+ foto.titulo);
+    }).error(function(error){
+      console.log('Erro ao remover a foto')
+    });
+  }
 });
