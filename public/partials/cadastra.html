@@ -1,1 +1,38 @@
-<h1>Cadastro de fotos</h1>
+<h1>Cadastro de foto</h1><span ng-if="mensagem != ''" class=""> - {{mensagem}}</span>
+<div class="row">
+  <div class="col-md-5">
+    <form name="formulario" novalidate ng-submit="submeter()">
+        <fieldset class="form-group">
+          <label for="name">Titulo</label>
+          <input type="text" name="titulo" class="form-control" placeholder="Ensira um título para a foto" required ng-model="foto.titulo" ng-maxlength="20">
+          <span ng-show="formulario.$submitted && formulario.titulo.$error.required && !testeFoto()" class="form-control alert-danger">
+            Titulo é obrigatório!
+          </span>
+          <span ng-show="formulario.$submitted && formulario.titulo.$error.maxlength" class="form-control alert-danger">
+            Tamanho máximo de 20 cadacteres!
+          </span>
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Endereço da foto</label>
+          <input type="text" name="url" class="form-control" placeholder="Ensira um endereço http://" ng-model="foto.url" ng-change="testeFoto()" required>
+          <span ng-show="formulario.$submitted && formulario.url.$error.required" class="form-control alert-danger">
+            Endreço URL é obrigatório!
+          </span>
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Descrição</label>
+          <textarea name="descricao" class="form-control" placeholder="Ensira uma descrição para a foto" rows="12" ng-model="foto.descricao"></textarea>
+        </fieldset>
+        <fieldset class='col-md-6' class='form-group'>
+          <input type="submit" name="enviar" value="Cadastrar" class='btn btn-primary' ng-disabled="formulario.$invalid">
+          <button type="button" name="limpar" class="btn btn-success" ng-click="limpar()">Limpar</button>
+        </fieldset>
+        <fieldset>
+          <a href="#/" class="btn btn-danger">Voltar à home</a>
+        </fieldset>
+    </form>
+  </div>
+  <div class="col-md-3">
+    <minha-foto src="{{foto.url}}" alt="{{foto.titulo}}" ng-if="testeFoto()"></minha-foto>
+  </div>
+</div>

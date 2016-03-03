@@ -6,6 +6,7 @@ myApp.config(function($routeProvider) {
     controller: "FotosController"
   });
   $routeProvider.when('/cadastro',{
-    templateUrl: 'partials/cadastra.html'
+    templateUrl: 'partials/cadastra.html',
+    controller: 'FotoController'
   });
 });

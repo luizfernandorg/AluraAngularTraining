@@ -8,7 +8,7 @@ angular.module('minhasDirectivas', [])
   ddo.transclude = true;
   ddo.templateUrl = 'meu-painel.html';
   return ddo;
-}).directive('minhasFotos', function(){
+}).directive('minhaFoto', function(){
   var ddo = {};
   ddo.restrict = 'AE';
   ddo.scope = {
