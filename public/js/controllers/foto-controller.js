@@ -5,9 +5,8 @@ myApp.controller('FotoController', function($scope, $http, $routeParams){
     $http.get('/v1/fotos/' + fotoAtual)
     .success(function(foto){
       $scope.foto = foto;
-      console.log(foto);
     }).error(function(error){
-      console.log('Erro ao obter a foto');
+      $scope.mensagem = 'Erro ao obter a foto';
     });
   }
 
@@ -24,9 +23,9 @@ myApp.controller('FotoController', function($scope, $http, $routeParams){
       if($routeParams.fotoId){
         $http.put("/v1/fotos/"+$scope.foto._id, $scope.foto)
         .success(function(){
-          console.log("Alterado")
+          $scope.mensagem = "Alterado";
         }).error(function(error){
-          console.log('erro');
+          $scope.mensagem = 'erro';
         });
       }else{
         $http.post("v1/fotos", $scope.foto).success(function(){
