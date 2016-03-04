@@ -28,10 +28,10 @@ myApp.controller('FotosController', function($scope, recursoFoto){
     recursoFoto.delete({fotoId: foto._id}, function(){
       var index = $scope.fotos.indexOf(foto);
       $scope.fotos.splice(index,1);
-      $scope.mensagem='Foto ' + foto.titulo + ' removida com sucesso!';
+      $scope.mensagem="Foto '" + foto.titulo + "' removida com sucesso!";
     }, function(error){
       console.log(erro);
-      $scope.mensagem='Erro ao remover a foto ' + foto.titulo;
+      $scope.mensagem="Erro ao remover a foto '" + foto.titulo + "'";
     });
   }
 });

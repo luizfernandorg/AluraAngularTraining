@@ -1,4 +1,4 @@
-myApp.controller('FotoController', function($scope, reccursoFoto, $routeParams){
+myApp.controller('FotoController', function($scope, cadastrarFotos, recursoFoto, $routeParams){
   $scope.foto = {};
   $scope.mensagem = '';
 
@@ -22,20 +22,12 @@ myApp.controller('FotoController', function($scope, reccursoFoto, $routeParams){
 
   $scope.submeter = function(){
     if($scope.formulario.$valid){
-      if(fotoAtual){
-        recursoFoto.update({fotoId: $scope.foto._id}, $scope.foto, function(){
-          $scope.mensagem = "Foto alterada com sucesso!";
-        }, function(error){
-          $scope.mensagem = 'Não foi possível alterar';
-        });
-      }else{
-        recursoFoto.save($scope.foto, function(){
-          $scope.mensagem = "Foto adicionada com sucesso";
-          $scope.limpar();
-        }, function(error){
-          $scope.mensagem = "Não foi possível cadastrar a foto";
-        });
-      }
+      cadastrarFotos.cadastrar($scope.foto).then(function(dados){
+        $scope.mensagem = dados.mensagem;
+        if(dados.inclusao) limpar();
+      }).catch(function(dados){
+        $scope.mensagem = error.mensagem;
+      });
     }
   }
 
