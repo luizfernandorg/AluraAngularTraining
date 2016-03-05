@@ -31,9 +31,9 @@ angular.module('minhasDirectivas', [])
 
   ddo.restrict = 'A'
 
-  ddo.scope = {
-    focado : '='
-  }
+  // ddo.scope = {
+  //   focado : '='
+  // }
 
   ddo.link = function(scope, element){
     // scope.$watch('focado', function(){
@@ -51,10 +51,26 @@ angular.module('minhasDirectivas', [])
 }).directive('removeMsg', function(){
   var ddo = {};
   ddo.restrict = "A";
-  ddo.scope = {
-    mensagem : "="
-  }
+
   ddo.link = function(scope, element){
-    scope.$on('');
+    scope.$on('mostraMensagem', function(){
+      setTimeout(function(){
+        element[0].style.display = 'none';
+      }, 3000);
+    });
   }
+  return ddo;
+}).directive('meusTitulos', function(){
+  var ddo = {};
+
+  ddo.restrict = 'E';
+  ddo.template = '<ul><li ng-repeat="titulo in titulos">{{titulo}}</li></ul>';
+  ddo.controller = function($scope, recursoFoto){
+    recursoFoto.query(function(fotos){
+      $scope.titulos = fotos.map(function(foto){
+        return foto.titulo;
+      })
+    });
+  };
+  return ddo;
 });

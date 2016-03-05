@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <p>
       &nbsp;
-      <span ng-show="mensagem.length" class="alert alert-info">
+      <span ng-show="mensagem.length" class="alert alert-info" remove-msg>
         {{mensagem}}
       </span>
     </p>
@@ -22,4 +22,7 @@
     <a href="#/edit/{{foto._id}}" class="btn btn-primary btn-block editar-btn">Editar</a>
     <meu-botao-perigo acao="remover(foto)" nome="Remover" class='btn-block'></meu-botao-perigo>
   </meu-painel>
+</div>
+<div class="row">
+  <meus-titulos></meus-titulos>
 </div>
