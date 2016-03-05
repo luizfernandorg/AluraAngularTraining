@@ -1,4 +1,4 @@
-myApp.controller('FotoController', function($scope, cadastrarFotos, recursoFoto, $routeParams){
+myApp.controller('FotoController', ['$scope', 'cadastrarFotos', 'recursoFoto', '$routeParams', function($scope, cadastrarFotos, recursoFoto, $routeParams){
   $scope.foto = {};
   $scope.mensagem = '';
 
@@ -36,5 +36,5 @@ myApp.controller('FotoController', function($scope, cadastrarFotos, recursoFoto,
     $scope.foto = {};
     $scope.testeFoto();
   }
-});
+}]);
 //http://localhost:3000/images/guitar-946701_1280.jpg

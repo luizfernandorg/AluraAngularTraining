@@ -1,10 +1,10 @@
-angular.module('meusServicos', ['ngResource']).factory('recursoFoto', function($resource){
+angular.module('meusServicos', ['ngResource']).factory('recursoFoto', ['$resource', function($resource){
   return $resource('v1/fotos/:fotoId', null, {
     'update' : {
       method: 'PUT'
     }
   });
-}).factory('cadastrarFotos', function(recursoFoto, $q, $rootScope){
+}]).factory('cadastrarFotos', ['recursoFoto','$q', '$rootScope',function(recursoFoto, $q, $rootScope){
   var service = {};
   var evento = 'fotoCadastrada';
   var displayMsg = 'mostraMensagem';
@@ -36,4 +36,4 @@ angular.module('meusServicos', ['ngResource']).factory('recursoFoto', function($
     });
   }
   return service;
-});
+}]);
