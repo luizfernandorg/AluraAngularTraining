@@ -25,6 +25,7 @@ myApp.controller('FotoController', function($scope, cadastrarFotos, recursoFoto,
       cadastrarFotos.cadastrar($scope.foto).then(function(dados){
         $scope.mensagem = dados.mensagem;
         if(dados.inclusao) limpar();
+        // $scope.$broadCast('fotoCadastrada');
       }).catch(function(dados){
         $scope.mensagem = error.mensagem;
       });
